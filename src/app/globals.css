@@ -1,0 +1,156 @@
+@import 'tailwindcss';
+
+
+@theme {
+  --color-background: hsl(216 15% 8%);
+  --color-foreground: hsl(210 20% 98%);
+
+  --color-card: hsl(220 13% 10%);
+  --color-card-foreground: hsl(210 20% 98%);
+
+  --color-popover: hsl(220 15% 12%);
+  --color-popover-foreground: hsl(210 20% 98%);
+
+  --color-primary: hsl(0 0% 100%);
+  --color-primary-foreground: hsl(220 13% 10%);
+
+  --color-secondary: hsl(220 13% 15%);
+  --color-secondary-foreground: hsl(210 20% 98%);
+
+  --color-muted: hsl(220 13% 12%);
+  --color-muted-foreground: hsl(215 15% 65%);
+
+  --color-accent: hsl(0 0% 90%);
+  --color-accent-foreground: hsl(220 13% 10%);
+
+  --color-gold: hsl(45 85% 55%);
+  --color-gold-dark: hsl(43 80% 50%);
+  --color-gold-foreground: hsl(220 13% 10%);
+
+  --color-destructive: hsl(0 84% 60%);
+  --color-destructive-foreground: hsl(210 20% 98%);
+
+  --color-border: hsl(220 13% 18%);
+  --color-input: hsl(220 13% 15%);
+  --color-ring: hsl(0 0% 100%);
+
+  --radius: 0.75rem;
+
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, hsl(0 0% 100%), hsl(0 0% 90%));
+  --gradient-gold: linear-gradient(135deg, hsl(45 85% 55%), hsl(43 80% 50%));
+  --gradient-dark: linear-gradient(135deg, hsl(216 15% 8%), hsl(220 13% 10%));
+  --gradient-card: linear-gradient(135deg, hsl(220 13% 10%), hsl(220 13% 12%));
+
+  /* Glows + Shadows */
+  --glow-primary: 0 0 20px hsl(0 0% 100% / 0.3);
+  --glow-gold: 0 0 25px hsl(45 85% 55% / 0.3);
+  --glow-accent: 0 0 30px hsl(0 0% 90% / 0.2);
+  --shadow-card: 0 8px 32px hsl(220 13% 5% / 0.4);
+
+  /* Transitions */
+  --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-glow: box-shadow 0.3s ease;
+
+  /* Sidebar */
+  --color-sidebar-background: hsl(0 0% 98%);
+  --color-sidebar-foreground: hsl(240 5.3% 26.1%);
+  --color-sidebar-primary: hsl(240 5.9% 10%);
+  --color-sidebar-primary-foreground: hsl(0 0% 98%);
+  --color-sidebar-accent: hsl(240 4.8% 95.9%);
+  --color-sidebar-accent-foreground: hsl(240 5.9% 10%);
+  --color-sidebar-border: hsl(220 13% 91%);
+  --color-sidebar-ring: hsl(217.2 91.2% 59.8%);
+}
+
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    overflow-x: clip;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    background: var(--color-background);
+    background-image:
+      radial-gradient(circle at 20% 80%, hsl(0 0% 100% / 0.05) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, hsl(45 85% 55% / 0.05) 0%, transparent 50%);
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-background);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-primary);
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-accent);
+  }
+}
+
+
+@utility glow-primary {
+  box-shadow: var(--glow-primary);
+}
+
+@utility glow-accent {
+  box-shadow: var(--glow-accent);
+}
+
+@utility glow-gold {
+  box-shadow: var(--glow-gold);
+}
+
+@utility bg-gradient-primary {
+  background: var(--gradient-primary);
+}
+
+@utility bg-gradient-gold {
+  background: var(--gradient-gold);
+}
+
+@utility bg-gradient-dark {
+  background: var(--gradient-dark);
+}
+
+@utility bg-gradient-card {
+  background: var(--gradient-card);
+}
+
+@utility shadow-card {
+  box-shadow: var(--shadow-card);
+}
+
+@utility transition-smooth {
+  transition: var(--transition-smooth);
+}
+
+@utility transition-glow {
+  transition: var(--transition-glow);
+}
+
+@utility text-gold {
+  color: var(--color-gold);
+}
+
+@utility text-gold-dark {
+  color: var(--color-gold-dark);
+}
+
+/* Mobile sidebar animations */
+@utility slide-in-right {
+  transform: translateX(0);
+}
+
+@utility slide-out-right {
+  transform: translateX(100%);
+}
